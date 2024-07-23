@@ -3,3 +3,7 @@
     display: block; /* Ensure the icon behaves like a block element for centering */
     margin: 0 auto; 
 }
+
+.custom-dropdown-menu {
+    font-family: 'Montserrat', sans-serif;
+  }

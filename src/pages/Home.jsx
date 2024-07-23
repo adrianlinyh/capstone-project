@@ -7,15 +7,23 @@ import reservationpic2 from '../assets/reservationpic2.jpg';
 import businesspic from '../assets/businesspic.jpg';
 import value from '../assets/value.jpg';
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../components/AuthProvider";
 
 
 
 export default function Home () {
+  
+    const { currentUser } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     const navigateClick = () => {
-      navigate(`/profile`);
+      if (currentUser) {
+          navigate('/profile');
+      } else {
+          navigate('/signup');
+      }
   };
 
 
@@ -63,7 +71,7 @@ export default function Home () {
             <br />
             <p>Streamline your establishment&apos;s reservations. Contact us to register and gain access to your own ReservATE administration.</p>
             <div className="d-flex align-items-center">
-            <Button variant='dark'>Contact us!</Button>
+            <Button variant='dark'>Contact us</Button>
             <p className="mb-0" style={{ marginLeft: '1rem' }}> <a href="/signup" className="text-dark">Check out our solutions</a></p>
             </div>
           </Col>
