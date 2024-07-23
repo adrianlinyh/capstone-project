@@ -26,13 +26,13 @@ export default function BookingForm() {
           <Col xs={6} md={4}>
             <Form.Control
               type="number"
-              placeholder="Total diners"
+              placeholder="Pax"
               min="1"
               max="1000"
             />
           </Col> 
           <Col xs={6} md={4} className="d-flex align-items-center">
-            <span>T&C Apply</span>
+            <span style={{ marginLeft: '3rem' }}>T&C Apply</span>
           </Col>
         </Row>
         <br />

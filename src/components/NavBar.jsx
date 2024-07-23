@@ -3,7 +3,9 @@ import { PersonLinesFill } from "react-bootstrap-icons"
 import logo2 from '../assets/logo2.jpg';
 import '../styles/icon.css';
 import { auth } from "../firebase";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 
 
@@ -11,6 +13,18 @@ import { useState } from "react";
 export default function NavBar() {
 
     const [showAlert, setShowAlert] = useState(false);
+
+    const { currentUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const navigateClick = () => {
+      if (currentUser) {
+          navigate('/profile');
+      } else {
+          navigate('/signup');
+      }
+  };
 
 
     const handleLogout = () => {
@@ -38,7 +52,7 @@ return (
         }}>
 
 <Container>
-        <Navbar.Brand href="#" className="text-white"><img
+        <Navbar.Brand as={Link} to="/"  className="text-white"><img
             src={logo2} // Replace with your image path
             alt="Logo"
             style={{ height: '50px', width: 'auto' }} // Adjust the height and width as needed
@@ -51,7 +65,7 @@ return (
             id="profile-dropdown"
             className='custom-dropdown-menu'
           >
-            <NavDropdown.Item href="/profile" style={{ textAlign: 'center', color: '#000000' }}>Profile</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateClick} style={{ textAlign: 'center', color: '#000000' }}>Profile</NavDropdown.Item>
             <NavDropdown.Item href="#settings" style={{ textAlign: 'center', color: '#000000' }}>Help</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item style={{ textAlign: 'center', color: '#660708' }} onClick={handleLogout}>Logout</NavDropdown.Item>

@@ -10,7 +10,7 @@ import {
 import { AuthContext } from '../components/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUp() {
+export default function SignIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -44,10 +44,6 @@ export default function SignUp() {
     //     }
     // }
 
-    if (!currentUser) {
-        navigate('/signup');
-    }
-
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin = async(e) => {
         e.preventDefault();
@@ -65,8 +61,8 @@ export default function SignUp() {
     console.log({ username, password });
   };
 
-  const handleNavigate = () => {
-    navigate('/signin');
+  const handleNavigate =() => {
+    navigate('/signup')
   }
 
   return (
@@ -80,7 +76,7 @@ export default function SignUp() {
               {/* Email Section */}
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                  <h1 className="mb-3" style={{ width: '100%', textAlign: 'center' }}>We&apos;re excited to have you!</h1>
+                  <h1 className="mb-3" style={{ width: '100%', textAlign: 'center' }}>Welcome Back!</h1>
                   <i className="bi bi-person-square icon"></i>
                   <Form.Group controlId="formEmail" className="text-center">
                     <Form.Control
@@ -100,7 +96,7 @@ export default function SignUp() {
                   <Form.Group controlId="formPassword" className="text-center">
                     <Form.Control
                       type="password"
-                      placeholder="Set your password"
+                      placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       style={{ backgroundColor: '#f0f0f0', color: '#333' }} // Light gray background
@@ -112,7 +108,7 @@ export default function SignUp() {
               <Col xs={12} md={8} lg={6} className="mx-auto">
 
               <Button variant="dark" type="submit" className="w-100 mt-3">
-                Create an account
+                Sign In
               </Button>
               </Col>
 
@@ -128,7 +124,7 @@ export default function SignUp() {
 
                 <Col xs={12} md={8} lg={6} className="mx-auto">
                 <Button className='w-100 mt-3' variant='dark' onClick={handleGoogleLogin}>
-                    <i className='bi bi-google'></i>  Sign up with Google
+                    <i className='bi bi-google'></i>  Sign In with Google
                 </Button>
                 </Col>
 
@@ -144,9 +140,9 @@ export default function SignUp() {
 
                 <Col xs={12} md={8} lg={6} className="mx-auto">
                 <p className='mb-3' style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Already have an account?
+                        New Here?
                     </p>
-                    <Button className='w-100 mt-3' variant='dark' onClick={handleNavigate}>Sign In</Button>
+                    <Button className='w-100 mt-3' variant='dark' onClick={handleNavigate}>Sign Up</Button>
                 </Col>
 
             </Form>

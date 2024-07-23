@@ -5,6 +5,8 @@ import ProfilePage from "./pages/ProfilePage";
 import SignUp from "./pages/SignUp";
 import SolutionsPage from "./pages/SolutionsPage";
 import { AuthProvider } from "./components/AuthProvider";
+import ContactUs from "./pages/ContactUs";
+import SignIn from "./pages/SignIn";
 
 
 function App() {
@@ -14,10 +16,12 @@ function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="*" element={<AuthPage />} /> */}
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/contact" element={<ContactUs />} />
+
 
 
 

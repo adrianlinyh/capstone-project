@@ -26,6 +26,11 @@ export default function Home () {
       }
   };
 
+  const handleNavigate = () => {
+    navigate('/contact');
+};
+
+
 
     return (
         <>
@@ -54,11 +59,11 @@ export default function Home () {
           <Col md={6} style={{ maxWidth: '500px', padding: '50px', marginLeft: '60px' }}>
             <h1 className="display-3">View, Book, Manage</h1>
             <br />
-            <p>Your one-stop-hub to all your dining reservation needs. Sign in to your ReservATE account to review and manage your current reservations!</p>
+            <p>Your One-Stop Hub To All Your Dining Reservation Needs. Sign In To Your ReservATE Account To Review And Manage Your Current Reservations!</p>
             <br />
             <div className="d-flex align-items-center">
-            <Button variant="dark" onClick={navigateClick}>Get started</Button>
-            <p className="mb-0" style={{ marginLeft: '1rem' }}>Already have an account? <a href="/signup" className="text-dark">Sign in</a></p>
+            <Button variant="dark" onClick={navigateClick}>Get Started</Button>
+            <p className="mb-0" style={{ marginLeft: '1rem' }}>Already Have an Account? <a href="/signin" className="text-dark">Sign In</a></p>
           </div>
           </Col>
         </Row>
@@ -69,10 +74,10 @@ export default function Home () {
           <Col md={6} style={{ maxWidth: '620px', padding: '50px', marginLeft: '10px'}}>
             <h1 className="display-3">Want to see your own restaurant here?</h1>
             <br />
-            <p>Streamline your establishment&apos;s reservations. Contact us to register and gain access to your own ReservATE administration.</p>
+            <p>Streamline Your Establishment&apos;s Reservations. Contact Us To Register and Gain Access to Your Own ReservATE Administration.</p>
             <div className="d-flex align-items-center">
-            <Button variant='dark'>Contact us</Button>
-            <p className="mb-0" style={{ marginLeft: '1rem' }}> <a href="/signup" className="text-dark">Check out our solutions</a></p>
+            <Button variant='dark' onClick={handleNavigate}>Contact Us</Button>
+            <p className="mb-0" style={{ marginLeft: '1rem' }}> <a href="/solutions" className="text-dark">Check Out Our Solutions</a></p>
             </div>
           </Col>
           <Col md={6}>
@@ -87,10 +92,11 @@ export default function Home () {
             <Image src={value} style={{ marginLeft: '2rem' }} alt="Membership" className="img-fluid" />
           </Col>
           <Col md={6} style={{ maxWidth: '550px', padding: '50px', marginLeft: '50px' }}>
-            <h1 className="display-3">Always growing for your betterment</h1>
+            <h1 className="display-3">Catch our latest financial insights</h1>
             <br />
-            <p>Feedback? Suggestions? Our ears are open! </p>
-            <Button variant='dark'>Send us an email</Button>
+            <p>Dive into the Numbers Driving Our Success. It&apos;s Money Well Spent!</p>
+
+            <Button variant='dark'>Click Here</Button>
           </Col>
         </Row>
         <br />
