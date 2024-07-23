@@ -4,12 +4,13 @@ import './App.css';
 import ProfilePage from "./pages/ProfilePage";
 import SignUp from "./pages/SignUp";
 import SolutionsPage from "./pages/SolutionsPage";
+import { AuthProvider } from "./components/AuthProvider";
 
 
 function App() {
 
   return (
-
+    <AuthProvider>
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +24,7 @@ function App() {
           
         </Routes>
       </BrowserRouter>
+      </AuthProvider>
   )
 }
 

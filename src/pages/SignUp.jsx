@@ -1,16 +1,68 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import '../styles/icon.css'; // Import your CSS file
+import '../styles/icon.css';
 import NavBar from '../components/NavBar';
+import {
+    GoogleAuthProvider,
+    getAuth,
+    signInWithPopup
+} from 'firebase/auth';
+import { AuthContext } from '../components/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const auth = getAuth();
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (currentUser) navigate('/profile');
+    }, [currentUser, navigate]);
+
+    // const handleSignUp = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const res = await createUserWithEmailAndPassword(
+    //             auth,
+    //             username,
+    //             password
+    //         );
+    //         console.log(res.user);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+    // const handleLogin = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         await signInWIthEmailAndPassword(auth, username, password);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+    if (!currentUser) {
+        navigate('/signup');
+    }
+
+    const provider = new GoogleAuthProvider();
+    const handleGoogleLogin = async(e) => {
+        e.preventDefault();
+        try{
+            await signInWithPopup(auth, provider);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log({ email, password });
+    console.log({ username, password });
   };
 
   return (
@@ -30,8 +82,8 @@ export default function SignUp() {
                     <Form.Control
                       type="email"
                       placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                       style={{ backgroundColor: '#f0f0f0', color: '#333' }} // Light gray background
                     />
                   </Form.Group>
@@ -71,7 +123,7 @@ export default function SignUp() {
                 </div>
 
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                <Button className='w-100 mt-3' variant='dark'>
+                <Button className='w-100 mt-3' variant='dark' onClick={handleGoogleLogin}>
                     <i className='bi bi-google'></i>  Sign up with Google
                 </Button>
                 </Col>
