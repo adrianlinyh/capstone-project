@@ -96,7 +96,7 @@ export default function Home () {
           <Col md={6} style={{ maxWidth: '550px', padding: '50px', marginLeft: '50px' }}>
             <h1 className="display-3">Size Doesn&apos;t Matter Here</h1>
             <br />
-            <p>From Start-Ups To Establishments From Abroad, Space Has Accommodated To All.</p>
+            <p>From Start-Ups To Establishments From Abroad, Space Accommodates To All.</p>
 
             <Button variant='dark'>Testimonials</Button>
           </Col>

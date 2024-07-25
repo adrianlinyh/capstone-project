@@ -63,12 +63,27 @@ export const saveBooking = createAsyncThunk(
     }
   );
 
+export const fetchBookingsByUser = createAsyncThunk(
+    "posts/fetchBookingsByUser",
+    async (userId) => {
+        console.log("user_id:", userId);
+
+      const response = await fetch(`${BASE_URL}/bookings2/${userId}`);
+      return response.json();
+    }
+  );
+
+
 const postsSlice = createSlice ({
     name: 'posts',
     initialState: { posts: [], loading: true },
     extraReducers: (builder) => {
+        builder.addCase(fetchBookingsByUser.fulfilled, (state, action) => {
+            state.posts = action.payload;
+            state.loading = false;
+          }),
         builder.addCase(saveBooking.fulfilled, (state, action) => {
-            state.posts = [action.payload, ...state.posts];
+            state.posts = action.payload;
           }),
         builder
         .addCase(savePost.fulfilled, (state, action) => {

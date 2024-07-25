@@ -12,7 +12,7 @@ export default function BookingForm() {
     const [bookingTime, setBookingTime] = useState(''); 
     const [bookingDuration, setBookingDuration] = useState(''); 
     const { currentUser } = useContext(AuthContext);
-    const userId = currentUser.uid;
+    const userId = currentUser ? currentUser.uid : null;
 
 
     const handleSubmit = () => {
@@ -21,8 +21,6 @@ export default function BookingForm() {
       setBookingTime('');
       setBookingDuration('');
     };
-
-    
 
 
   return (
@@ -66,6 +64,7 @@ export default function BookingForm() {
       </Form.Group>
       <Button variant='dark' onClick={handleSubmit}>Submit</Button>
     </Form>
+    
     
   );
 }
