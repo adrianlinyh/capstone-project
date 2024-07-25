@@ -7,12 +7,16 @@ import SolutionsPage from "./pages/SolutionsPage";
 import { AuthProvider } from "./components/AuthProvider";
 import ContactUs from "./pages/ContactUs";
 import SignIn from "./pages/SignIn";
+import { Provider } from "react-redux";
+import store from "./store";
 
 
 function App() {
 
   return (
     <AuthProvider>
+          <Provider store = {store}>
+
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,6 +32,8 @@ function App() {
           
         </Routes>
       </BrowserRouter>
+      </Provider>
+
       </AuthProvider>
   )
 }

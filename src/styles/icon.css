@@ -7,3 +7,8 @@
 .custom-dropdown-menu {
     font-family: 'Montserrat', sans-serif;
   }
+
+  .avatar {
+    height: 80px;
+    width: 80px;
+  }

@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import {
     GoogleAuthProvider,
     getAuth,
+    signInWithEmailAndPassword,
     signInWithPopup
 } from 'firebase/auth';
 import { AuthContext } from '../components/AuthProvider';
@@ -21,28 +22,15 @@ export default function SignIn() {
         if (currentUser) navigate('/profile');
     }, [currentUser, navigate]);
 
-    // const handleSignUp = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const res = await createUserWithEmailAndPassword(
-    //             auth,
-    //             username,
-    //             password
-    //         );
-    //         console.log(res.user);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-    // const handleLogin = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         await signInWIthEmailAndPassword(auth, username, password);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
+   
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            await signInWithEmailAndPassword(auth, username, password);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin = async(e) => {
@@ -55,12 +43,6 @@ export default function SignIn() {
     }
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log({ username, password });
-  };
-
   const handleNavigate =() => {
     navigate('/signup')
   }
@@ -72,19 +54,19 @@ export default function SignIn() {
       <Row className="w-100">
         <Col md={6} lg={4} className="mx-auto">
           <div className="p-4 text-center">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleLogin}>
               {/* Email Section */}
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                  <h1 className="mb-3" style={{ width: '100%', textAlign: 'center' }}>Welcome Back!</h1>
-                  <i className="bi bi-person-square icon"></i>
+                  <h1 className="mb-3 display-1" style={{ width: '100%', textAlign: 'center', fontSize: '3rem' }}>Welcome Back!</h1>
+                  <br />
                   <Form.Group controlId="formEmail" className="text-center">
                     <Form.Control
                       type="email"
                       placeholder="Enter your email"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} // Light gray background
+                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} 
                     />
                   </Form.Group>
                 </Col>
@@ -99,7 +81,7 @@ export default function SignIn() {
                       placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} // Light gray background
+                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} 
                     />
                   </Form.Group>
                 </Col>
