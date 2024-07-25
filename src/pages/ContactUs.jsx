@@ -21,7 +21,7 @@ export default function ContactUs() {
                     <Col md={6} className="d-flex align-items-center justify-content-center" style={{ marginTop: '160px' }}>
                         <Form style={{ width: '100%' }}>
                             <Form.Group controlId="formName" className="mb-3">
-                                <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Restaurant Name</Form.Label>
+                                <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Name</Form.Label>
                                 <Form.Control type="text" placeholder="Enter your name" style={{ backgroundColor: '#f0f0f0', color: '#333' }}/>
                             </Form.Group>
 

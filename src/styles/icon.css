@@ -12,3 +12,9 @@
     height: 80px;
     width: 80px;
   }
+
+  .h5-icon {
+    width: 3em;
+    height: 2em;
+    vertical-align: middle;
+  }

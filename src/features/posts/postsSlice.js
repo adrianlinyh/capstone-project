@@ -4,7 +4,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { db, storage } from "../../firebase";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import axios from "axios";
 
+const BASE_URL =
+  "https://608e0917-d9a8-45c6-a858-e26a621bef59-00-2tj4ebpi0b8vr.sisko.replit.dev";
 
 
 
@@ -39,10 +42,34 @@ export const savePost = createAsyncThunk(
     }
 );
 
+export const saveBooking = createAsyncThunk(
+    "posts/saveBookings",
+    async ({ bookingDate, bookingTime, bookingDuration, userId }) => {
+      console.log("date:", bookingDate);
+      console.log("time:", bookingTime);
+      console.log("duration:", bookingDuration);
+      console.log("user_id:", userId);
+
+  
+      const data = {
+        date: bookingDate,
+        time: bookingTime, 
+        duration: bookingDuration,
+        user_id: userId,
+      };
+  
+      const response = await axios.post(`${BASE_URL}/bookings2`, data);
+      return response.data;
+    }
+  );
+
 const postsSlice = createSlice ({
     name: 'posts',
     initialState: { posts: [], loading: true },
     extraReducers: (builder) => {
+        builder.addCase(saveBooking.fulfilled, (state, action) => {
+            state.posts = [action.payload, ...state.posts];
+          }),
         builder
         .addCase(savePost.fulfilled, (state, action) => {
             state.posts = [action.payload, ...state.posts];

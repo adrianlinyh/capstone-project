@@ -1,6 +1,6 @@
 import { Alert, Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { PersonLinesFill } from "react-bootstrap-icons"
-import logo2 from '../assets/logo2.jpg';
+import logo3 from '../assets/logo3.png';
 import '../styles/icon.css';
 import { auth } from "../firebase";
 import { useContext, useState } from "react";
@@ -53,7 +53,7 @@ return (
 
 <Container>
         <Navbar.Brand as={Link} to="/"  className="text-white"><img
-            src={logo2} // Replace with your image path
+            src={logo3} // Replace with your image path
             alt="Logo"
             style={{ height: '50px', width: 'auto' }} // Adjust the height and width as needed
           />
