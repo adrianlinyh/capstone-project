@@ -73,26 +73,29 @@ export default function ProfilePage () {
     return (
         <>
             <NavBar />
-                <Container fluid style={{ paddingTop: '150px' }} className='contact-us'>
-                    <Row>
-                        <Col md={6} className="d-flex align-items-center justify-content-center">
-                            <div className="content-left">
+            <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white' }}>
+
+            <Container style={{ paddingTop: '150px' }} className='contact-us'>
+                <Row className="g-4">
+                    {/* Profile Info Column */}
+                    <Col lg={4} md={12} className="d-flex align-items-center justify-content-center">
+                        <div className="text-center">
                             <h1>{currentUser?.email}</h1>
                             <br />
                             <img 
                                 src={photoUrl} 
                                 alt="Profile" 
-                                style={{ width: '150px', height: '150px', marginBottom: '20px' }}          
+                                className="img-fluid rounded-circle mb-3" 
+                                style={{ maxWidth: '150px', maxHeight: '150px' }}
                             />
                             <br />
-                             <Button variant="primary" onClick={handleShowUpload}>
+                            <Button variant="primary" onClick={handleShowUpload}>
                                 Upload Picture
                             </Button>
-                                
-                            </div>
-                        </Col>
-                        <Col md={6} className="d-flex align-items-center justify-content-center">
-                            <div className="content-right">
+                        </div>
+                    </Col>
+                        <Col lg={6} md={12} className="d-flex align-items-start justify-content-center justify-content-lg-end">
+                            <div className="content-right text-lg-end text-center">
                                 <h1>Your Live Reservations</h1>
                                 <div className="text-center">
                                     {bookings.length > 0 ? (
@@ -123,6 +126,8 @@ export default function ProfilePage () {
                     
                 </Container>        
                 <PictureModal show={showUploadModal} handleClose={handleCloseUpload} />
+                </div>
+
         </>
     )
 }

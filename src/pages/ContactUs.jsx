@@ -8,7 +8,7 @@ export default function ContactUs() {
     return (
         <div style={{ backgroundColor: '#000000', color: '#ffffff', minHeight: '100vh', padding: '2rem' }}>
             <NavBar />
-            <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+            <Container className="mt-5 d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
                 <Row className="w-100">
                     <Col md={6} className="d-flex align-items-center justify-content-center">
                         <div>
@@ -18,7 +18,7 @@ export default function ContactUs() {
                         </div>
                     </Col>
 
-                    <Col md={6} className="d-flex align-items-center justify-content-center" style={{ marginTop: '160px' }}>
+                    <Col md={6} className="d-flex align-items-center justify-content-center" style={{ marginTop: '190px' }}>
                         <Form style={{ width: '100%' }}>
                             <Form.Group controlId="formName" className="mb-3">
                                 <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Name</Form.Label>
