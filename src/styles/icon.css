@@ -3,3 +3,18 @@
     display: block; /* Ensure the icon behaves like a block element for centering */
     margin: 0 auto; 
 }
+
+.custom-dropdown-menu {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .avatar {
+    height: 80px;
+    width: 80px;
+  }
+
+  .h5-icon {
+    width: 3em;
+    height: 2em;
+    vertical-align: middle;
+  }

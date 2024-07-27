@@ -1,38 +1,80 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import '../styles/icon.css'; // Import your CSS file
+import '../styles/icon.css';
 import NavBar from '../components/NavBar';
+import {
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
+    getAuth,
+    signInWithPopup
+} from 'firebase/auth';
+import { AuthContext } from '../components/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log({ email, password });
-  };
+    const navigate = useNavigate();
+    const auth = getAuth();
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (currentUser) navigate('/profile');
+    }, [currentUser, navigate]);
+
+    const handleSignUp = async (e) => {
+      console.log(username);
+      console.log(password);
+        e.preventDefault();
+        try {
+            const res = await createUserWithEmailAndPassword(
+                auth,
+                username,
+                password
+            );
+            console.log(res.user);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    const provider = new GoogleAuthProvider();
+    const handleGoogleLogin = async(e) => {
+        e.preventDefault();
+        try{
+            await signInWithPopup(auth, provider);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+  const handleNavigate = () => {
+    navigate('/signin');
+  }
+
 
   return (
     <>
     <NavBar />
-    <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh', backgroundColor: 'white', paddingTop: '200px' }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh', backgroundColor: 'white', paddingTop: '300px' }}>
       <Row className="w-100">
         <Col md={6} lg={4} className="mx-auto">
           <div className="p-4 text-center">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSignUp}>
               {/* Email Section */}
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                  <h1 className="mb-3" style={{ width: '100%', textAlign: 'center' }}>We&apos;re excited to have you!</h1>
-                  <i className="bi bi-person-square icon"></i>
+                  <h1 className="mb-3 display-1" style={{ width: '100%', textAlign: 'center', fontSize: '3rem' }}>We&apos;re excited to have you!</h1>
+                  <br />
                   <Form.Group controlId="formEmail" className="text-center">
                     <Form.Control
                       type="email"
                       placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} // Light gray background
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      style={{ backgroundColor: '#f0f0f0', color: '#333' }}
                     />
                   </Form.Group>
                 </Col>
@@ -47,7 +89,7 @@ export default function SignUp() {
                       placeholder="Set your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} // Light gray background
+                      style={{ backgroundColor: '#f0f0f0', color: '#333' }} 
                     />
                   </Form.Group>
                 </Col>
@@ -71,7 +113,7 @@ export default function SignUp() {
                 </div>
 
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                <Button className='w-100 mt-3' variant='dark'>
+                <Button className='w-100 mt-3' variant='dark' onClick={handleGoogleLogin}>
                     <i className='bi bi-google'></i>  Sign up with Google
                 </Button>
                 </Col>
@@ -87,13 +129,14 @@ export default function SignUp() {
                 </div>
 
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                <p className='mb-3'>
+                <p className='mb-3' style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Already have an account?
                     </p>
-                    <Button className='w-100 mt-3' variant='dark'>Sign In</Button>
+                    <Button className='w-100 mt-3' variant='dark' onClick={handleNavigate}>Sign In</Button>
                 </Col>
 
             </Form>
+
           </div>
         </Col>
       </Row>

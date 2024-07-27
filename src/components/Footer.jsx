@@ -1,4 +1,6 @@
 import { Col, Container, Row } from 'react-bootstrap';
+import logo3 from '../assets/logo3.png';
+import '../styles/icon.css';
 
 export default function Footer () {
     return (
@@ -6,7 +8,7 @@ export default function Footer () {
           <Container style={{ paddingTop: '40px' }}>
             <Row>
               <Col md={3}>
-                <h5>ReservATE</h5>
+                <h5><img src={logo3} className="h5-icon"/>Space</h5>
                 <p>Created by Adrian L. in 2024</p>
               </Col>
 
@@ -21,12 +23,12 @@ export default function Footer () {
               </Col>
 
               <Col md={3}>
-                <h5>Offerings</h5>
+                <h5>Partnerships</h5>
                 <ul className="list-unstyled">
-                  <li>Reservations</li>
-                  <li>Pre-book Meals</li>
-                  <li>Business Events</li>
-                  <li>Careers</li>
+                  <li>Brokers</li>
+                  <li>Landlords</li>
+                  <li>Event Planners</li>
+                  <li>Refer A Friend</li>
                 </ul>
               </Col>
 
@@ -57,7 +59,7 @@ export default function Footer () {
 
             <Row style={{ paddingTop: '40px' }}>
               <Col className="d-flex justify-content-start mt-4" >
-                <p>&copy; 2024 ReservATE</p>
+                <p>&copy; 2024 Space</p>
               </Col>
             </Row>
           </Container>
