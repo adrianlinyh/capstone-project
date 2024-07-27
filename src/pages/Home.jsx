@@ -46,7 +46,7 @@ export default function Home () {
             <br />
           </Col>
           <Col md={6}>
-            <Image src={coworking1} alt="Map" className="img-fluid" />
+            <Image src={coworking1} alt="Map" className="img-fluid" fluid/>
             {/* placeholder */}
           </Col>
         </Row>
@@ -55,10 +55,10 @@ export default function Home () {
 
         <Row className="my-4">
           <Col md={6}>
-            <Image src={viewbookmanage} alt="Reservation" className="img-fluid" />
+            <Image src={viewbookmanage} alt="Reservation" className="img-fluid" fluid/>
 
           </Col>
-          <Col md={6} style={{ maxWidth: '500px', padding: '50px', marginLeft: '60px' }}>
+          <Col md={6} style={{ maxWidth: '500px', padding: '50px' }}>
             <h1 className="display-3">View, Book, Manage</h1>
             <br />
             <p>Your One-Stop Hub To All Your Space Reservation Needs. Sign In To Your Space Account To Review And Manage Your Current Bookings!</p>
@@ -73,7 +73,7 @@ export default function Home () {
         <br />
 
         <Row className="my-4">
-          <Col md={6} style={{ maxWidth: '620px', padding: '50px', marginLeft: '10px'}}>
+          <Col md={6} style={{ maxWidth: '620px', padding: '50px'}}>
             <h1 className="display-3">Large Events?</h1>
             <br />
             <p>Streamline Your Establishment&apos;s Spacial Needs. Contact Us To Tailor and Gain Access to Your Own Spacial Needs.</p>
@@ -83,7 +83,7 @@ export default function Home () {
             </div>
           </Col>
           <Col md={6}>
-            <Image src={largespace} style={{ marginLeft: '3rem', width: 'auto', height: 'auto' }} alt="Business" className="img-fluid" />
+            <Image src={largespace} alt="Business" className="img-fluid" fluid />
           </Col>
         </Row>
 
@@ -91,9 +91,9 @@ export default function Home () {
 
         <Row className="my-4">
           <Col md={6}>
-            <Image src={testimonial} style={{ marginLeft: '2rem' }} alt="Membership" className="img-fluid" />
+            <Image src={testimonial} alt="Membership" className="img-fluid" fluid/>
           </Col>
-          <Col md={6} style={{ maxWidth: '550px', padding: '50px', marginLeft: '50px' }}>
+          <Col md={6} style={{ maxWidth: '550px', padding: '50px' }}>
             <h1 className="display-3">Size Doesn&apos;t Matter Here</h1>
             <br />
             <p>From Start-Ups To Establishments From Abroad, Space Accommodates To All.</p>
