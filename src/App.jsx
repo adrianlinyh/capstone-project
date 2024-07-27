@@ -9,6 +9,8 @@ import ContactUs from "./pages/ContactUs";
 import SignIn from "./pages/SignIn";
 import { Provider } from "react-redux";
 import store from "./store";
+import Help from "./pages/Help";
+import ContextProvider from "./context/Context";
 
 
 function App() {
@@ -25,11 +27,12 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/contact" element={<ContactUs />} />
-
-
-
-
-          
+          <Route path="/help" element={
+            <ContextProvider>
+              <Help />
+            </ContextProvider>
+}         />
+        
         </Routes>
       </BrowserRouter>
       </Provider>
