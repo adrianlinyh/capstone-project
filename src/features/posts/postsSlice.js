@@ -73,6 +73,37 @@ export const fetchBookingsByUser = createAsyncThunk(
     }
   );
 
+export const deleteBooking = createAsyncThunk(
+  'posts/deleteBooking',
+  async (bookingId) => {
+      
+      await axios.delete(`${BASE_URL}/bookings2/${bookingId}`);
+  
+        return bookingId; 
+      } 
+    )
+
+    export const updateBooking = createAsyncThunk(
+      'posts/updateBooking',
+      async ({ bookingId, newBookingDate, newBookingTime, newBookingDuration, userId }) => {
+        console.log("bookingId:", bookingId );
+        console.log("date:", newBookingDate);
+        console.log("time:", newBookingTime);
+        console.log("duration:", newBookingDuration);
+    
+        const data = {
+          id: bookingId,
+          date: newBookingDate,
+          time: newBookingTime, 
+          duration: newBookingDuration,
+          user_id: userId,
+        };
+    
+        const response = await axios.put(`${BASE_URL}/bookings2/${userId}`, data);
+        return response.data;
+      }
+    )
+  
 
 const postsSlice = createSlice ({
     name: 'posts',
@@ -88,7 +119,16 @@ const postsSlice = createSlice ({
         builder
         .addCase(savePost.fulfilled, (state, action) => {
             state.posts = [action.payload, ...state.posts];
-        })
+        }),
+        builder.addCase(updateBooking.fulfilled, (state, action) => {
+          state.posts = action.payload;
+          state.loading = false;
+        }),  
+        builder.addCase(deleteBooking.fulfilled, (state, action) => {
+          state.posts = state.posts.filter(post => post.id !== action.payload);
+          state.loading = false;
+        });
+  
     },
 });
 

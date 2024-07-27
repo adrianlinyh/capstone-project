@@ -7,8 +7,9 @@ import NavBar from "../components/NavBar";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import PictureModal from "../components/PictureModal";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBookingsByUser } from "../features/posts/postsSlice";
+import { deleteBooking, fetchBookingsByUser } from "../features/posts/postsSlice";
 import { AuthContext } from "../components/AuthProvider";
+import UpdateBooking from "../components/UpdateBooking";
 
 
 export default function ProfilePage () {
@@ -46,6 +47,13 @@ export default function ProfilePage () {
     if (loading) {
         return <p>Loading...</p>;
       }
+
+
+      const handleDelete = (bookingId) => {
+        dispatch(deleteBooking(bookingId));
+        console.log(bookingId);
+      };
+    
        
 
 
@@ -72,15 +80,16 @@ export default function ProfilePage () {
                                 <div className="text-center">
                                     {bookings.length > 0 ? (
                                     bookings.map(booking => { 
-                                        console.log(booking.date); 
+                                         
                                     return (
 
                                         <div key={booking.id}>
                                         <p>Date: {booking.date}</p>
                                         <p>Time: {booking.time}</p>
                                         <p>Pax: {booking.duration}</p>
-                                        <Button variant="warning">Change</Button>
-                                        <Button variant="danger">Delete</Button>
+                                        <Button variant="warning" onClick={handleShow}>Change</Button>
+                                        <UpdateBooking show={show} handleClose={handleClose} bookingId={booking.id} userId={userId}/>
+                                        <Button variant="danger" onClick={() => handleDelete(booking.id)}>Delete</Button>
                                                         <hr />
                                         </div>
                                     )
