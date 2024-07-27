@@ -37,6 +37,14 @@ export default function NavBar() {
       console.error('Error during logout:', error);
         });
        }
+
+       const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     
 return (
     <>
@@ -52,7 +60,15 @@ return (
         }}>
 
 <Container>
-        <Navbar.Brand as={Link} to="/"  className="text-white"><img
+<Navbar.Brand
+                        as="div" // Use div to handle onClick event
+                        onClick={() => {
+                            scrollToTop(); // Scroll to top on click
+                            navigate("/"); // Navigate to home
+                        }}
+                        className="text-white"
+                        style={{ cursor: 'pointer' }} // Pointer cursor for click
+                    ><img
             src={logo3} // Replace with your image path
             alt="Logo"
             style={{ height: '50px', width: 'auto' }} // Adjust the height and width as needed
