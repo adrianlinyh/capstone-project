@@ -36,7 +36,7 @@ export default function PictureModal({ show, handleClose }) {
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
-        setError(null); // Clear error if a new file is selected
+        setError(null); 
     };
 
     return (

@@ -5,16 +5,16 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import PictureModal from "../components/PictureModal";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBooking, fetchBookingsByUser } from "../features/posts/postsSlice";
 import { AuthContext } from "../components/AuthProvider";
 import UpdateBooking from "../components/UpdateBooking";
+import PictureModal from '../components/PictureModal';
 
 
 export default function ProfilePage () {
     const navigate = useNavigate();
-    const profileImage = 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg'
+    const [photoUrl, setPhotoUrl] = useState('https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg');
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -23,6 +23,8 @@ export default function ProfilePage () {
     const loading = useSelector(state => state.posts.loading);
     const { currentUser } = useContext(AuthContext);
     const userId = currentUser ? currentUser.uid : null;
+    const [showUploadModal, setShowUploadModal] = useState(false);
+
 
     useEffect(() => {
         if (!currentUser) {
@@ -37,10 +39,17 @@ export default function ProfilePage () {
       }, [userId, dispatch]
     );
 
+    useEffect(() => {
+        if (currentUser?.photoUrl) {
+            console.log(currentUser.photoUrl);
+            setPhotoUrl(currentUser.photoUrl);
+        }
+      }, [currentUser])
+
     console.log(userId);
 
     if (!currentUser) {
-        return null; // Render nothing if currentUser is null
+        return null;
     }
     
 
@@ -54,8 +63,12 @@ export default function ProfilePage () {
         console.log(bookingId);
       };
     
-       
+      const handleCloseUpload = () => setShowUploadModal(false);
+    const handleShowUpload = () => setShowUploadModal(true);
 
+       
+      
+      
 
     return (
         <>
@@ -64,14 +77,18 @@ export default function ProfilePage () {
                     <Row>
                         <Col md={6} className="d-flex align-items-center justify-content-center">
                             <div className="content-left">
+                            <h1>{currentUser?.email}</h1>
+                            <br />
                             <img 
-                                src={profileImage} 
+                                src={photoUrl} 
                                 alt="Profile" 
-                                style={{ width: '150px', height: '150px', marginBottom: '20px' }}
-                                onClick={handleShow} 
+                                style={{ width: '150px', height: '150px', marginBottom: '20px' }}          
                             />
-                                <h1>{currentUser?.email}</h1>
-                                <PictureModal show={show} handleClose={handleClose} />
+                            <br />
+                             <Button variant="primary" onClick={handleShowUpload}>
+                                Upload Picture
+                            </Button>
+                                
                             </div>
                         </Col>
                         <Col md={6} className="d-flex align-items-center justify-content-center">
@@ -105,6 +122,7 @@ export default function ProfilePage () {
                     </Row>
                     
                 </Container>        
+                <PictureModal show={showUploadModal} handleClose={handleCloseUpload} />
         </>
     )
 }
