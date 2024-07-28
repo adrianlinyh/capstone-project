@@ -8,7 +8,7 @@ import { deleteBooking, fetchBookingsByUser } from "../features/posts/postsSlice
 import { AuthContext } from "../components/AuthProvider";
 import UpdateBooking from "../components/UpdateBooking";
 import PictureModal from '../components/PictureModal';
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 
 
 export default function ProfilePage () {
@@ -58,13 +58,14 @@ export default function ProfilePage () {
         dispatch(deleteBooking(bookingId));
         console.log(bookingId);
         toast.info('Booking deleted', {
-            position: "bottom-left",
+            position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             theme: "dark",
+            transition: Bounce,
             style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
         });
     

@@ -4,7 +4,8 @@ import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveBooking } from "../features/posts/postsSlice";
 import { AuthContext } from "./AuthProvider";
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function BookingForm() {
 
@@ -14,21 +15,41 @@ export default function BookingForm() {
     const [bookingDuration, setBookingDuration] = useState(''); 
     const { currentUser } = useContext(AuthContext);
     const userId = currentUser ? currentUser.uid : null;
+    const navigate = useNavigate();
 
 
     const handleSubmit = () => {
+      if (!currentUser) {
+        toast.error('You need an account to set a booking. Please sign in', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce, 
+          style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
+        });
+        navigate('/signin'); 
+        return;
+      }
+
+
       dispatch(saveBooking( { userId, bookingDate, bookingTime, bookingDuration }));
       setBookingDate('');
       setBookingTime('');
       setBookingDuration('');
       toast.success('Booking created!', {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         theme: "dark",
+        transition: Bounce,
         style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
     });
     };
