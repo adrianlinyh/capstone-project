@@ -94,7 +94,7 @@ export default function ProfilePage () {
                                 style={{ maxWidth: '150px', maxHeight: '150px' }}
                             />
                             <br />
-                            <Button variant="primary" onClick={handleShowUpload}>
+                            <Button variant="dark" onClick={handleShowUpload}>
                                 Upload Picture
                             </Button>
                         </div>
@@ -114,9 +114,9 @@ export default function ProfilePage () {
                                         <p>Date: {booking.date}</p>
                                         <p>Time: {booking.time}</p>
                                         <p>Pax: {booking.duration}</p>
-                                        <Button variant="warning" onClick={handleShow}>Change</Button>
+                                        <Button variant="light" onClick={handleShow}>Change</Button>
                                         <UpdateBooking show={show} handleClose={handleClose} bookingId={booking.id} userId={userId}/>
-                                        <Button variant="danger" onClick={() => handleDelete(booking.id)}>Delete</Button>
+                                        <Button variant="dark" onClick={() => handleDelete(booking.id)}>Delete</Button>
                                                         <hr />
                                         </div>
                                     )

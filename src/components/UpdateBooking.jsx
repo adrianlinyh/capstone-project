@@ -21,7 +21,7 @@ export default function UpdateBooking({show, handleClose, userId, bookingDate, b
             setNewBookingDuration(newBookingDuration);
             handleClose();
 
-            
+
             toast.success('Booking updated successfully!', {
               position: "bottom-left",
               autoClose: 3000,
@@ -60,7 +60,7 @@ export default function UpdateBooking({show, handleClose, userId, bookingDate, b
                   />
                 </Form.Group>
                 <Form.Group controlId="bookingDuration">
-                  <Form.Label>Duration (hours)</Form.Label>
+                  <Form.Label>Pax</Form.Label>
                   <Form.Control
                     type="number"
                     value={newBookingDuration}
@@ -73,7 +73,7 @@ export default function UpdateBooking({show, handleClose, userId, bookingDate, b
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" onClick={handleUpdate}>
+              <Button variant="dark" onClick={handleUpdate}>
                 Save Changes
               </Button>
             </Modal.Footer>

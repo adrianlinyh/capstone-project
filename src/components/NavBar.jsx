@@ -92,8 +92,12 @@ return (
           >
             <NavDropdown.Item onClick={navigateClick} style={{ textAlign: 'center', color: '#000000' }}>Profile</NavDropdown.Item>
             <NavDropdown.Item href="#settings" style={{ textAlign: 'center', color: '#000000' }} as={Link} to="/help">Help (A.I.)</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item style={{ textAlign: 'center', color: '#660708' }} onClick={handleLogout}>Logout</NavDropdown.Item>
+            {currentUser && (
+                            <>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item style={{ textAlign: 'center', color: '#660708' }} onClick={handleLogout}>Logout</NavDropdown.Item>
+                            </>
+                        )}
           </NavDropdown>
         </Nav>
       </Container>
