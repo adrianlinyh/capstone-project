@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import { useContext } from "react";
 import { Context } from "../context/Context";
 import '../styles/help.css'
+import Footer from "../components/Footer";
 
 
 export default function Help() {
@@ -20,12 +21,13 @@ export default function Help() {
     return(
         <div className="help-page" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <NavBar />
-        <div className="container mt-5" style={{ 
+        <div className="container mt-5 mb-5" style={{ 
                     fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
                     width: '100%', 
                     maxWidth: '1000px', 
                     padding: '2rem', 
-                    paddingTop: '250px', 
+                    paddingTop: '250px',
+                    paddingBottom: '400px', 
                     justifyContent: 'center', 
                     alignItems: 'center', 
                     flex: 1 
@@ -63,6 +65,7 @@ export default function Help() {
             </div>
         </div>
     </div>
+    <Footer />
     </div>
     )
 }

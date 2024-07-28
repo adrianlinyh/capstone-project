@@ -9,6 +9,7 @@ import { AuthContext } from "../components/AuthProvider";
 import UpdateBooking from "../components/UpdateBooking";
 import PictureModal from '../components/PictureModal';
 import { Bounce, toast } from "react-toastify";
+import Footer from "../components/Footer";
 
 
 export default function ProfilePage () {
@@ -132,7 +133,8 @@ export default function ProfilePage () {
                         </Col>
                     </Row>
                     
-                </Container>        
+                </Container>
+                <Footer />        
                 </div>
 
         </>
