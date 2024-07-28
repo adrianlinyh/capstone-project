@@ -4,6 +4,7 @@ import contactus from '../assets/contactus.jpg';
 import { Form } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import { useEffect } from "react";
+import Footer from "../components/Footer";
 
 export default function ContactUs() {
 
@@ -25,7 +26,7 @@ export default function ContactUs() {
                         </div>
                     </Col>
 
-                    <Col md={6} className="mt-5 d-flex align-items-center justify-content-center" style={{ paddingTop: '140px'}}>
+                    <Col md={6} className="mt-5 mb-4 pb-4 d-flex align-items-center justify-content-center" style={{ paddingTop: '140px'}}>
                         <Form style={{ width: '100%' }}>
                             <Form.Group controlId="formName" className="mb-3">
                                 <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Name</Form.Label>
@@ -49,6 +50,7 @@ export default function ContactUs() {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     );
 }
