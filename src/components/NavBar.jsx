@@ -6,7 +6,7 @@ import { auth } from "../firebase";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import { Slide, toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 
 
 
@@ -30,7 +30,7 @@ export default function NavBar() {
   const handleLogout = () => {
     auth.signOut().then(() => {
         toast.info('Successfully Logged Out!', {
-            position: "bottom-left",
+            position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -38,7 +38,7 @@ export default function NavBar() {
             draggable: true,
             progress: undefined,
             theme: "dark",
-            transition: Slide,
+            transition: Bounce,
             style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
         });
     }).catch((error) => {
