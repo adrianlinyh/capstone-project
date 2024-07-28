@@ -17,16 +17,16 @@ export const savePost = createAsyncThunk(
         try {
             let imageUrl = '';
             if (file !== null) {
-            const imageRef = ref(storage, `posts/${file.name}`);
+            const imageRef = ref(storage, `profilePictures/${file.name}`);
             const response = await uploadBytes(imageRef, file);
             imageUrl = await getDownloadURL(response.ref);
             }
-            const postsRef  = collection(db, `users/${userId}/posts`);
-            console.log(`users/${userId}/posts`);
+            const postsRef  = collection(db, `users/${userId}/profilePictures`);
+            console.log(`users/${userId}/profilePictures`);
             // since no id is give, firebase auto generates a unique ID for this new doc
             const newPostRef = doc(postsRef);
 
-            await setDoc(newPostRef, { content: imageUrl });
+            await setDoc(newPostRef, { imageUrl });
             const newPost = await getDoc(newPostRef);
 
             const post = {
@@ -66,8 +66,6 @@ export const saveBooking = createAsyncThunk(
 export const fetchBookingsByUser = createAsyncThunk(
     "posts/fetchBookingsByUser",
     async (userId) => {
-        console.log("user_id:", userId);
-
       const response = await fetch(`${BASE_URL}/bookings2/${userId}`);
       return response.json();
     }
@@ -109,6 +107,7 @@ const postsSlice = createSlice ({
     name: 'posts',
     initialState: { posts: [], loading: true },
     extraReducers: (builder) => {
+      
         builder.addCase(fetchBookingsByUser.fulfilled, (state, action) => {
             state.posts = action.payload;
             state.loading = false;

@@ -11,11 +11,16 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Help from "./pages/Help";
 import ContextProvider from "./context/Context";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import { Slide } from "react-toastify";
+
 
 
 function App() {
 
   return (
+    <>
     <AuthProvider>
           <Provider store = {store}>
 
@@ -38,6 +43,20 @@ function App() {
       </Provider>
 
       </AuthProvider>
+      <ToastContainer
+                position="bottom-left"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Slide} // Note the correct property name
+            />
+      </>
   )
 }
 

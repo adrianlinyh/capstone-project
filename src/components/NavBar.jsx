@@ -1,18 +1,18 @@
-import { Alert, Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { PersonLinesFill } from "react-bootstrap-icons"
 import logo3 from '../assets/logo3.png';
 import '../styles/icon.css';
 import { auth } from "../firebase";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import { Slide, toast } from "react-toastify";
 
 
 
 
 export default function NavBar() {
 
-    const [showAlert, setShowAlert] = useState(false);
 
     const { currentUser } = useContext(AuthContext);
 
@@ -27,16 +27,25 @@ export default function NavBar() {
   };
 
 
-    const handleLogout = () => {
-        auth.signOut().then(() => {
-            setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 2000); // Alert disappears after 2 seconds
-    }).catch((error) => {
-      console.error('Error during logout:', error);
+  const handleLogout = () => {
+    auth.signOut().then(() => {
+        toast.info('Successfully Logged Out!', {
+            position: "bottom-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Slide,
+            style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
         });
-       }
+    }).catch((error) => {
+        console.error('Error during logout:', error);
+    });
+}
+
 
        const scrollToTop = () => {
         window.scrollTo({
@@ -49,18 +58,18 @@ export default function NavBar() {
 return (
     <>
 
-    <Navbar style={{ 
-        backgroundColor: '#000000',
-        height: '70px',
-        position: 'fixed', // Ensure it stays at the top
-        top: 0,
-        left: 0,
-        width: '100%',
-        zIndex: 1000 // Ensure it is above other content 
-        }}>
+          <Navbar style={{ 
+              backgroundColor: '#000000',
+              height: '70px',
+              position: 'fixed', // Ensure it stays at the top
+              top: 0,
+              left: 0,
+              width: '100%',
+              zIndex: 1000 // Ensure it is above other content 
+              }}>
 
-<Container>
-<Navbar.Brand
+                    <Container>
+                    <Navbar.Brand
                         as="div" // Use div to handle onClick event
                         onClick={() => {
                             scrollToTop(); // Scroll to top on click
@@ -89,26 +98,6 @@ return (
         </Nav>
       </Container>
     </Navbar>
-
-    {showAlert && (
-                <Alert variant="dark" style={{
-                    position: 'fixed',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: 2000,
-                    transition: 'opacity 0.5s ease-in-out',
-                    opacity: showAlert ? 1 : 0,
-                    padding: '20px', // Adjust padding for better appearance
-                    backgroundColor: '#000000', // Solid black background
-                    color: '#ffffff', // White text color for contrast
-                    fontSize: '1rem', // Adjust font size to match h1 display-1
-                    fontFamily: 'Montserrat, sans-serif', // Ensure Montserrat font is used
-                    border: '2px solid #ffffff',
-                }}>
-                    Successfully Logged Out
-                </Alert>
-            )}
 
     </>
     )

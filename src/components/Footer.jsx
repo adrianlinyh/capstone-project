@@ -33,29 +33,29 @@ export default function Footer () {
               </Col>
 
               <Col md={3} className="d-flex flex-column align-items-end">
-                <h5>Contact Us</h5>
+                <h5>Contact Me</h5>
                 <p>Email: linyh.adrian@gmail.com</p>
                 <p>Phone: +60 12 424 6808</p>
               </Col>
             </Row>
 
-            <Row className="my-4 text-center" style={{ paddingTop: '40px' }}>
-                    <Col md={1} className="d-flex justify-content-center">
-                        <i className="bi bi-facebook"></i>
-                    </Col>
-                    <Col md={1} className="d-flex justify-content-center">
-                        <i className="bi bi-instagram text-white"></i>
-                    </Col>
-                    <Col md={1} className="d-flex justify-content-center">
-                        <i className="bi bi-linkedin text-white"></i>
-                    </Col>
-                    <Col md={1} className="d-flex justify-content-center">
-                        <i className="bi bi-twitter text-white"></i>
-                    </Col>
-                    <Col md={1} className="d-flex justify-content-center">
-                        <i className="bi bi-youtube text-white"></i>
-                    </Col>
-                </Row>
+            <Row className="my-4 text-center d-flex justify-content-center" style={{ paddingTop: '40px' }}>
+                <Col xs="auto" className="d-flex justify-content-center">
+                    <i className="bi bi-facebook"></i>
+                </Col>
+                <Col xs="auto" className="d-flex justify-content-center">
+                    <i className="bi bi-instagram text-white"></i>
+                </Col>
+                <Col xs="auto" className="d-flex justify-content-center">
+                    <i className="bi bi-linkedin text-white"></i>
+                </Col>
+                <Col xs="auto" className="d-flex justify-content-center">
+                    <i className="bi bi-twitter text-white"></i>
+                </Col>
+                <Col xs="auto" className="d-flex justify-content-center">
+                    <i className="bi bi-youtube text-white"></i>
+                </Col>
+            </Row>
 
             <Row style={{ paddingTop: '40px' }}>
               <Col className="d-flex justify-content-start mt-4" >

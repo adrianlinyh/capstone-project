@@ -1,5 +1,3 @@
-// import { getAuth } from "firebase/auth"
-// import { AuthContext } from "../components/AuthProvider"
 
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +8,7 @@ import { deleteBooking, fetchBookingsByUser } from "../features/posts/postsSlice
 import { AuthContext } from "../components/AuthProvider";
 import UpdateBooking from "../components/UpdateBooking";
 import PictureModal from '../components/PictureModal';
+import { toast } from "react-toastify";
 
 
 export default function ProfilePage () {
@@ -24,29 +23,26 @@ export default function ProfilePage () {
     const { currentUser } = useContext(AuthContext);
     const userId = currentUser ? currentUser.uid : null;
     const [showUploadModal, setShowUploadModal] = useState(false);
+    const handleCloseUpload = () => setShowUploadModal(false);
+    const handleShowUpload = () => setShowUploadModal(true);
+
 
 
     useEffect(() => {
         if (!currentUser) {
             navigate('/signin');
+        } else if (currentUser?.photoUrl) {
+            setPhotoUrl(currentUser.photoUrl);
         }
     }, [currentUser, navigate]);
-
     
 
     useEffect(() => {
-        dispatch(fetchBookingsByUser(userId)); 
-      }, [userId, dispatch]
-    );
-
-    useEffect(() => {
-        if (currentUser?.photoUrl) {
-            console.log(currentUser.photoUrl);
-            setPhotoUrl(currentUser.photoUrl);
+        if (userId) {
+            dispatch(fetchBookingsByUser(userId));
         }
-      }, [currentUser])
+    }, [userId, dispatch, bookings]);
 
-    console.log(userId);
 
     if (!currentUser) {
         return null;
@@ -61,11 +57,20 @@ export default function ProfilePage () {
       const handleDelete = (bookingId) => {
         dispatch(deleteBooking(bookingId));
         console.log(bookingId);
+        toast.info('Booking deleted', {
+            position: "bottom-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark",
+            style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
+        });
+    
       };
     
-      const handleCloseUpload = () => setShowUploadModal(false);
-    const handleShowUpload = () => setShowUploadModal(true);
-
+    
        
       
       
@@ -77,7 +82,7 @@ export default function ProfilePage () {
 
             <Container style={{ paddingTop: '150px' }} className='contact-us'>
                 <Row className="g-4">
-                    {/* Profile Info Column */}
+
                     <Col lg={4} md={12} className="d-flex align-items-center justify-content-center">
                         <div className="text-center">
                             <h1>{currentUser?.email}</h1>
@@ -93,6 +98,8 @@ export default function ProfilePage () {
                                 Upload Picture
                             </Button>
                         </div>
+                        <PictureModal show={showUploadModal} handleClose={handleCloseUpload} />
+
                     </Col>
                         <Col lg={6} md={12} className="d-flex align-items-start justify-content-center justify-content-lg-end">
                             <div className="content-right text-lg-end text-center">
@@ -125,7 +132,6 @@ export default function ProfilePage () {
                     </Row>
                     
                 </Container>        
-                <PictureModal show={showUploadModal} handleClose={handleCloseUpload} />
                 </div>
 
         </>
