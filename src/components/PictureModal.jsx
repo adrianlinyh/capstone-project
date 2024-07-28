@@ -67,8 +67,7 @@ export default function PictureModal({ show, handleClose }) {
                         Close
                     </Button>
                     <Button 
-                        variant='primary' 
-                        className='rounded-pill' 
+                        variant='dark' 
                         onClick={handleSave} 
                         disabled={loading}
                     >
