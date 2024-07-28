@@ -3,22 +3,29 @@ import '../styles/contactus.css';
 import contactus from '../assets/contactus.jpg';
 import { Form } from "react-bootstrap";
 import NavBar from "../components/NavBar";
+import { useEffect } from "react";
 
 export default function ContactUs() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+
     return (
-        <div style={{ backgroundColor: '#000000', color: '#ffffff', minHeight: '100vh', padding: '2rem' }}>
+        <div style={{ backgroundColor: '#000000', color: '#ffffff', minHeight: '100vh', paddingTop: '80px' }}>
             <NavBar />
-            <Container className="mt-5 d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
+            <Container className="mt-5 d-flex align-items-center justify-content-center">
                 <Row className="w-100">
                     <Col md={6} className="d-flex align-items-center justify-content-center">
                         <div>
                             <h1 className="display-3">We&apos;ll get back to you in a hot minute</h1>
                             <br />
-                            <img src={contactus} alt="Contact Us" style={{ width: '100%', height: 'auto' }} />
+                            <img src={contactus} alt="Contact Us" style={{ width: '100%', height: 'auto', maxWidth: '1000px' }} />
                         </div>
                     </Col>
 
-                    <Col md={6} className="d-flex align-items-center justify-content-center" style={{ marginTop: '190px' }}>
+                    <Col md={6} className="mt-5 d-flex align-items-center justify-content-center" style={{ paddingTop: '140px'}}>
                         <Form style={{ width: '100%' }}>
                             <Form.Group controlId="formName" className="mb-3">
                                 <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Name</Form.Label>

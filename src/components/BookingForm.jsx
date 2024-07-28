@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveBooking } from "../features/posts/postsSlice";
 import { AuthContext } from "./AuthProvider";
+import { toast } from "react-toastify";
 
 export default function BookingForm() {
 
@@ -20,6 +21,16 @@ export default function BookingForm() {
       setBookingDate('');
       setBookingTime('');
       setBookingDuration('');
+      toast.success('Booking created!', {
+        position: "bottom-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
+    });
     };
 
 
@@ -30,7 +41,7 @@ export default function BookingForm() {
           <Col xs={6} md={4}>
             <Form.Control
               type="date"
-              placeholder="Date in mm/dd (e.g: 23/10)"
+              placeholder="Date"
               onChange={(e) => setBookingDate(e.target.value)}
             />
           </Col>
@@ -38,7 +49,7 @@ export default function BookingForm() {
           <Col xs={6} md={4}>
             <Form.Control
               type="time"
-              placeholder="Time in 24h (e.g: 14:00)"
+              placeholder="Time"
               onChange={(e) => setBookingTime(e.target.value)}
             />
           </Col>

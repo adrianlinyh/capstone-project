@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import { AuthContext } from '../components/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
   const [username, setUsername] = useState('');
@@ -34,6 +35,17 @@ export default function SignUp() {
                 password
             );
             console.log(res.user);
+            toast.success('Account created successfully!', {
+              position: "bottom-left",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              theme: "dark",
+              style: { fontFamily: 'Segoe UI, sans-serif', fontSize: '1rem' } 
+          });
+  
         } catch (error) {
             console.error(error);
         }

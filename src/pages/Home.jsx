@@ -38,7 +38,7 @@ export default function Home () {
         <>
         <NavBar />
        
-        <Container style={{ paddingTop: '110px' }}>
+        <Container style={{ paddingTop: '80px' }}>
         <Row className="my-4">
           <Col md={6}>
             <h1 className="display-3">Book Some Space, Anytime</h1>
@@ -47,7 +47,6 @@ export default function Home () {
           </Col>
           <Col md={6}>
             <Image src={coworking1} alt="Map" className="img-fluid" fluid/>
-            {/* placeholder */}
           </Col>
         </Row>
 
@@ -69,9 +68,7 @@ export default function Home () {
           </div>
           </Col>
         </Row>
-
-        <br />
-
+        
         <Row className="my-4">
           <Col md={6} style={{ maxWidth: '620px', padding: '50px'}}>
             <h1 className="display-3">Large Events?</h1>
