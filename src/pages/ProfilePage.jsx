@@ -115,8 +115,8 @@ export default function ProfilePage() {
             <NavBar />
             <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white' }}>
                 <Container>
-                    <Row className="mt-5">
-                        <Col md={6} className="d-flex flex-column align-items-center">
+                    <Row>
+                        <Col md={6} className="d-flex flex-column align-items-center mt-5">
                             <h1 className="display-3 mb-4" style={{ marginTop: '2rem' }}>Your Profile</h1>
                             <input 
                                 type="file" 
@@ -169,8 +169,8 @@ export default function ProfilePage() {
                             </Container>
                         </Col>
 
-                        <Col md={6} className="d-flex flex-column align-items-center mt-md-0">
-                            <h1 className="display-4 mb-4 pt-5 mt-md-0">Your Live Reservations</h1>
+                        <Col md={6} className="d-flex flex-column align-items-center">
+                            <h1 className="display-4 mb-4 pt-5 mt-5">Your Live Reservations</h1>
                             <div className="text-center">
                                 {bookings.length > 0 ? (
                                     bookings.map(booking => (
