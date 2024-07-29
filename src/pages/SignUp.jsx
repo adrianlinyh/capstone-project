@@ -71,12 +71,12 @@ export default function SignUp() {
   return (
     <>
     <NavBar />
-    <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh', backgroundColor: 'white', paddingTop: '300px' }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh', backgroundColor: 'white', paddingTop: '200px' }}>
       <Row className="w-100">
         <Col md={6} lg={4} className="mx-auto">
           <div className="p-4 text-center">
             <Form onSubmit={handleSignUp}>
-              {/* Email Section */}
+
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
                   <h1 className="mb-3 display-1" style={{ width: '100%', textAlign: 'center', fontSize: '3rem' }}>We&apos;re excited to have you!</h1>
@@ -93,7 +93,6 @@ export default function SignUp() {
                 </Col>
               </div>
 
-              {/* Password Section */}
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
                   <Form.Group controlId="formPassword" className="text-center">

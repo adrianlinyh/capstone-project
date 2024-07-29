@@ -15,7 +15,6 @@ import { AuthContext } from "../components/AuthProvider";
 export default function Home () {
   
     const { currentUser } = useContext(AuthContext);
-
     const navigate = useNavigate();
 
     const navigateClick = () => {
@@ -30,14 +29,9 @@ export default function Home () {
     navigate('/contact');
 };
 
-
-
-
-
     return (
         <>
         <NavBar />
-       
         <Container style={{ paddingTop: '80px' }}>
         <Row className="my-4">
           <Col md={6}>
@@ -99,8 +93,6 @@ export default function Home () {
           </Col>
         </Row>
         <br />
-
-
       </Container>
       <Footer />
     </>

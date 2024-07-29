@@ -17,13 +17,3 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
 
-
-//storage
-// export async function upload(file, currentUser, setLoading) {
-//   const fileRef = ref(storage, currentUser.uid + '.png');
-
-//   setLoading(true);
-//   const snapshot = await uploadBytes(fileRef, file);
-//   setLoading(false);
-//   alert('Picture Uploaded');
-// }

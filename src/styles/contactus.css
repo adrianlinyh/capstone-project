@@ -6,31 +6,31 @@
 }
 
 .carousel {
-    max-width: 100%; /* Adjust the percentage as needed */
+    max-width: 100%; 
     margin: auto;
 }
 
 .carousel-inner img {
-    max-height: 550px; /* Adjust the height as needed */
-    object-fit: cover; /* Ensure the image covers the area without stretching */
+    max-height: 550px; 
+    object-fit: cover; 
 }
 
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 50%; /* Adjust the width as needed */
+    width: 50%; 
 }
 
 .carousel-control-prev {
-    left: 50%; /* Adjust this value to move the button closer to the center */
+    left: 50%; 
 }
 
 .carousel-control-next {
-    right: 50%; /* Adjust this value to move the button closer to the center */
+    right: 50%; 
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: black; /* Set the color to black */
-    border-radius: 10%; /* Optional: make the buttons circular */
+    background-color: black;
+    border-radius: 10%;
 }

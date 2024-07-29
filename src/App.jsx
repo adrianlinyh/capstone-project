@@ -23,7 +23,6 @@ function App() {
     <>
     <AuthProvider>
           <Provider store = {store}>
-
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,11 +36,9 @@ function App() {
               <Help />
             </ContextProvider>
 }         />
-        
         </Routes>
       </BrowserRouter>
       </Provider>
-
       </AuthProvider>
       <ToastContainer
                 position="bottom-left"
@@ -54,7 +51,7 @@ function App() {
                 draggable
                 pauseOnHover
                 theme="dark"
-                transition={Slide} // Note the correct property name
+                transition={Slide} 
             />
       </>
   )
