@@ -1,6 +1,6 @@
 .icon { 
     font-size: 80px;
-    display: block; /* Ensure the icon behaves like a block element for centering */
+    display: block; 
     margin: 0 auto; 
 }
 

@@ -61,32 +61,31 @@ return (
           <Navbar style={{ 
               backgroundColor: '#000000',
               height: '70px',
-              position: 'fixed', // Ensure it stays at the top
-              top: 0,
+              position: 'fixed', 
               left: 0,
               width: '100%',
-              zIndex: 1000 // Ensure it is above other content 
+              zIndex: 1000 
               }}>
 
                     <Container>
                     <Navbar.Brand
-                        as="div" // Use div to handle onClick event
+                        as="div" 
                         onClick={() => {
-                            scrollToTop(); // Scroll to top on click
-                            navigate("/"); // Navigate to home
+                            scrollToTop(); 
+                            navigate("/"); 
                         }}
                         className="text-white"
-                        style={{ cursor: 'pointer' }} // Pointer cursor for click
+                        style={{ cursor: 'pointer' }} 
                     ><img
-            src={logo3} // Replace with your image path
+            src={logo3} 
             alt="Logo"
-            style={{ height: '50px', width: 'auto' }} // Adjust the height and width as needed
+            style={{ height: '50px', width: 'auto' }} 
           />
           </Navbar.Brand>
         <Nav className="ms-auto">
           <NavDropdown
             align="end"
-            title={<PersonLinesFill size={24} className="text-white" />} // Profile icon
+            title={<PersonLinesFill size={24} className="text-white" />} 
             id="profile-dropdown"
             className='custom-dropdown-menu'
           >

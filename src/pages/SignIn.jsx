@@ -50,15 +50,15 @@ export default function SignIn() {
   return (
     <>
     <NavBar />
-    <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh', backgroundColor: 'white', paddingTop: '200px' }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh', backgroundColor: 'black', paddingTop: '10px' }}>
       <Row className="w-100">
         <Col md={6} lg={4} className="mx-auto">
           <div className="p-4 text-center">
             <Form onSubmit={handleLogin}>
-              {/* Email Section */}
+
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                  <h1 className="mb-3 display-1" style={{ width: '100%', textAlign: 'center', fontSize: '3rem' }}>Welcome Back!</h1>
+                  <h1 className="mb-3 display-1" style={{ width: '100%', textAlign: 'center', fontSize: '3rem' , color: 'white'}}>Welcome Back!</h1>
                   <br />
                   <Form.Group controlId="formEmail" className="text-center">
                     <Form.Control
@@ -72,7 +72,6 @@ export default function SignIn() {
                 </Col>
               </div>
 
-              {/* Password Section */}
               <div className="mb-4">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
                   <Form.Group controlId="formPassword" className="text-center">
@@ -98,7 +97,7 @@ export default function SignIn() {
               <Col xs={12} md={8} lg={6} className="mx-auto">
                   <div className="d-flex align-items-center justify-content-center">
                     <hr style={{ flex: 1, border: '1px solid #ccc' }} />
-                    <span className="mx-2">or</span>
+                    <span className="mx-2" style={{ color: 'white' }} >or</span>
                     <hr style={{ flex: 1, border: '1px solid #ccc' }} />
                   </div>
                 </Col>
@@ -114,14 +113,14 @@ export default function SignIn() {
               <Col xs={12} md={8} lg={6} className="mx-auto">
                   <div className="d-flex align-items-center justify-content-center">
                     <hr style={{ flex: 1, border: '1px solid #ccc' }} />
-                    <span className="mx-2">or</span>
+                    <span className="mx-2" style={{ color: 'white' }}>or</span>
                     <hr style={{ flex: 1, border: '1px solid #ccc' }} />
                   </div>
                 </Col>
                 </div>
 
                 <Col xs={12} md={8} lg={6} className="mx-auto">
-                <p className='mb-3' style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className='mb-3' style={{ fontFamily: 'Montserrat, sans-serif', color: 'white' }}>
                         New Here?
                     </p>
                     <Button className='w-100 mt-3' variant='dark' onClick={handleNavigate}>Sign Up</Button>

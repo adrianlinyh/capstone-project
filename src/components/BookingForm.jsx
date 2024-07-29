@@ -59,7 +59,8 @@ export default function BookingForm() {
     <Form style={{ paddingTop: '20px' }}>
       <Form.Group controlId='booking'>
         <Row>
-          <Col xs={6} md={4}>
+          <Col xs={6} sm={6} md={4}>
+          <Form.Label className="d-block d-sm-none">Date</Form.Label>
             <Form.Control
               type="date"
               placeholder="Date"
@@ -67,7 +68,8 @@ export default function BookingForm() {
             />
           </Col>
 
-          <Col xs={6} md={4}>
+          <Col xs={6} sm={6} md={4}>
+          <Form.Label className="d-block d-sm-none">Time</Form.Label>
             <Form.Control
               type="time"
               placeholder="Time"
@@ -78,7 +80,7 @@ export default function BookingForm() {
         <br />
 
         <Row>
-          <Col xs={6} md={4}>
+          <Col xs={6} sm={6} md={4}>
             <Form.Control
               type="number"
               placeholder="Pax"
@@ -87,7 +89,7 @@ export default function BookingForm() {
               onChange={(e) => setBookingDuration(e.target.value)}
             />
           </Col> 
-          <Col xs={6} md={4} className="d-flex align-items-center">
+          <Col xs={6} sm={6} md={4} className="d-flex align-items-center">
             <span style={{ marginLeft: '3rem' }}>T&C Apply</span>
           </Col>
         </Row>

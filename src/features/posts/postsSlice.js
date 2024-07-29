@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import axios from "axios";
-// import { jwtDecode } from "jwt-decode";
 import { db, storage } from "../../firebase";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -17,11 +15,11 @@ export const savePost = createAsyncThunk(
         try {
             let imageUrl = '';
             if (file !== null) {
-            const imageRef = ref(storage, `profilePictures/${file.name}`);
-            const response = await uploadBytes(imageRef, file);
-            imageUrl = await getDownloadURL(response.ref);
+              const imageRef = ref(storage, `profilePictures/${file.name}`);
+              const response = await uploadBytes(imageRef, file);
+              imageUrl = await getDownloadURL(response.ref);
             }
-            const postsRef  = collection(db, `users/${userId}/profilePictures`);
+            const postsRef = collection(db, `users/${userId}/profilePictures`);
             console.log(`users/${userId}/profilePictures`);
             // since no id is give, firebase auto generates a unique ID for this new doc
             const newPostRef = doc(postsRef);
@@ -66,9 +64,15 @@ export const saveBooking = createAsyncThunk(
 export const fetchBookingsByUser = createAsyncThunk(
     "posts/fetchBookingsByUser",
     async (userId) => {
+      try {
       const response = await fetch(`${BASE_URL}/bookings2/${userId}`);
+      
       return response.json();
+    } catch (error) {
+      console.error(error);
+      throw error
     }
+  }
   );
 
 export const deleteBooking = createAsyncThunk(
