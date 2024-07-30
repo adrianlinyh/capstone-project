@@ -29,6 +29,10 @@ export default function Home () {
     navigate('/contact');
 };
 
+const handleNavTestimonials = () => {
+  window.open('https://www.linkedin.com/in/adrian-lin-859918242/')
+}
+
     return (
         <>
         <NavBar />
@@ -90,9 +94,9 @@ export default function Home () {
           <Col md={6} style={{ maxWidth: '550px', padding: '50px' }}>
             <h1 className="display-3">Size Doesn&apos;t Matter Here</h1>
             <br />
-            <p>From Start-Ups To Establishments From Abroad, Space Accommodates To All.</p>
+            <p>From Start-Ups To Establishments From Abroad, Space Accommodates To All. Join Space Today!</p>
 
-            <Button variant='dark'>Testimonials</Button>
+            <Button variant='dark' onClick={handleNavTestimonials}>Say Hi</Button>
           </Col>
         </Row>
         <br />
