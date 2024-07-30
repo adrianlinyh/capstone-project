@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Context } from "../context/Context";
 import '../styles/help.css'
 import Footer from "../components/Footer";
+import Dots from "../components/Dots";
 
 
 export default function Help() {
@@ -41,7 +42,7 @@ export default function Help() {
                 <div className="mb-3" style={{fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}>
                         
                             <b style={{fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}> {!showResult ? 'How can I help?' : <p>{recentPrompt}</p>} </b> 
-                            {loading? 'Loading..' 
+                            {loading? <Dots /> 
                             :
                             <p dangerouslySetInnerHTML={{__html:resultData}} style={{fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
                                 

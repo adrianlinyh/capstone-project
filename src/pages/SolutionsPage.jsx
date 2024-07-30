@@ -91,7 +91,7 @@ export default function SolutionsPage() {
                         </Container>
                     </Col>
                 </Row>
-                <hr style={{ borderColor: '#ffffff' }} />
+                <hr style={{ borderColor: '#ffffff', marginBottom: '300px' }}/>
 
             </Container>
             <Footer />

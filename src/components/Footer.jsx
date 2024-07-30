@@ -8,7 +8,7 @@ export default function Footer () {
           <Container style={{ paddingTop: '40px' }}>
             <Row>
               <Col md={3}>
-                <h5><img src={logo3} className="h5-icon"/>Space</h5>
+                <h5><img src={logo3} className="h5-icon"/></h5>
                 <p>Created by Adrian L. in 2024</p>
               </Col>
 
