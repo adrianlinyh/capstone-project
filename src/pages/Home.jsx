@@ -58,8 +58,11 @@ export default function Home () {
             <br />
             <div className="d-flex align-items-center">
             <Button variant="dark" onClick={navigateClick}>Get Started</Button>
-            <p className="mb-0" style={{ marginLeft: '1rem' }}>Already Have an Account? <a href="/signin" className="text-dark">Sign In</a></p>
-          </div>
+            {!currentUser && (
+                <p className="mb-0" style={{ marginLeft: '1rem' }}>
+                  Already Have an Account? <a href="/signin" className="text-dark">Sign In</a>
+                </p>
+              )}          </div>
           </Col>
         </Row>
         

@@ -14,8 +14,9 @@ export default function ContactUs() {
 
 
     return (
+        <>
+        <NavBar />
         <div style={{ backgroundColor: '#000000', color: '#ffffff', minHeight: '100vh', paddingTop: '80px' }}>
-            <NavBar />
             <Container className="mt-5 d-flex align-items-center justify-content-center">
                 <Row className="w-100">
                     <Col md={6} className="d-flex align-items-center justify-content-center">
@@ -52,5 +53,6 @@ export default function ContactUs() {
             </Container>
             <Footer />
         </div>
+        </>
     );
 }

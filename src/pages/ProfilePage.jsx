@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { getAuth, updateProfile } from "firebase/auth";
+import Block from "../components/Block";
 
 export default function ProfilePage() {
     const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default function ProfilePage() {
     }
     
     if (loading) {
-        return <p>Loading...</p>;
+        return <Block />;
     }
 
     const handleDelete = (bookingId) => {
@@ -116,7 +117,7 @@ export default function ProfilePage() {
             <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white' }}>
                 <Container>
                     <Row>
-                        <Col md={6} className="d-flex flex-column align-items-center mt-5">
+                        <Col md={6} className="d-flex flex-column align-items-center mt-5 mb-4">
                             <h1 className="display-3 mb-4" style={{ marginTop: '2rem' }}>Your Profile</h1>
                             <input 
                                 type="file" 
@@ -133,11 +134,11 @@ export default function ProfilePage() {
                                     onClick={handleImageUpload}
                                 >
                                     {imagePreview ? 
-                                        <img src={imagePreview} className="w-100 h-100 object-fit-cover" alt="Profile Preview" />
+                                        <img src={imagePreview} className="w-100 h-100 object-fit-cover" alt="Profile Preview" style={{ padding: '30px' }}/>
                                         : currentUser.photoURL ? (
-                                            <img src={currentUser.photoURL} className="w-100 h-100 object-fit-cover" alt="Profile" />
+                                            <img src={currentUser.photoURL} className="w-100 h-100 object-fit-cover" alt="Profile" style={{ padding: '30px' }}/>
                                         ) : (
-                                            <img src={photoUrl} className="w-100 h-100 object-fit-cover" alt="Default Profile" />
+                                            <img src={photoUrl} className="w-100 h-100 object-fit-cover" alt="Default Profile" style={{ padding: '30px' }}/>
                                         )
                                     }
                                     {changeDetail && (
@@ -169,18 +170,18 @@ export default function ProfilePage() {
                             </Container>
                         </Col>
 
-                        <Col md={6} className="d-flex flex-column align-items-center">
-                            <h1 className="display-4 mb-4 pt-5 mt-5">Your Live Reservations</h1>
-                            <div className="text-center">
+                        <Col md={6} className="text-center" style={{ marginBottom: '300px' }}>
+                            <h1 className="display-4 mb-4" style={{ marginTop: '90px' }}>Your Live Bookings</h1>
+                            <div className="text-center mb-2" >
                                 {bookings.length > 0 ? (
                                     bookings.map(booking => (
                                         <div key={booking.id} className="mb-4">
                                             <p>Date: {booking.date}</p>
                                             <p>Time: {booking.time}</p>
                                             <p>Pax: {booking.duration}</p>
-                                            <Button variant="light" onClick={handleShow}>Change</Button>
+                                            <Button variant="light" className='mb-3' onClick={handleShow}>Change</Button>
                                             <UpdateBooking show={show} handleClose={handleClose} bookingId={booking.id} userId={userId}/>
-                                            <Button variant="dark" onClick={() => handleDelete(booking.id)}>Delete</Button>
+                                            <Button variant="dark" className='mb-3' onClick={() => handleDelete(booking.id)}>Delete</Button>
                                             <hr />
                                         </div>
                                     ))
@@ -189,8 +190,8 @@ export default function ProfilePage() {
                                 )}
                             </div>
                         </Col>
-                    </Row>
-                </Container>
+                        </Row>
+                        </Container>
                 <Footer />        
             </div>
         </>
