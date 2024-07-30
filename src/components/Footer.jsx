@@ -8,8 +8,7 @@ export default function Footer () {
           <Container style={{ paddingTop: '40px' }}>
             <Row>
               <Col md={3}>
-                <h5><img src={logo3} className="h5-icon"/></h5>
-                <p>Created by Adrian L. in 2024</p>
+                <h5><img src={logo3} className="h5-icon " style={{ marginLeft: '6px'}}/></h5>
               </Col>
 
               <Col md={3}>
@@ -59,7 +58,8 @@ export default function Footer () {
 
             <Row style={{ paddingTop: '40px' }}>
               <Col className="d-flex justify-content-start mt-4" >
-                <p>&copy; 2024 Space</p>
+                <p>&copy; Space, created by Adrian L. in 2024
+                </p>
               </Col>
             </Row>
           </Container>
