@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import axios from "axios";
 
 const BASE_URL =
-  "https://608e0917-d9a8-45c6-a858-e26a621bef59-00-2tj4ebpi0b8vr.sisko.replit.dev";
+  import.meta.env.VITE_BASE_URL
 
 
 
