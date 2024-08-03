@@ -55,7 +55,7 @@ const handleNavTestimonials = () => {
             <Image src={viewbookmanage} alt="Reservation" className="img-fluid" fluid/>
 
           </Col>
-          <Col md={6} style={{ maxWidth: '500px', padding: '50px' }}>
+          <Col md={6} style={{ maxWidth: '500px', padding: '20px' }}>
             <h1 className="display-3">View, Book, Manage</h1>
             <br />
             <p>Your One-Stop Hub To All Your Space Reservation Needs. Sign In To Your Space Account To Review And Manage Your Current Bookings!</p>
