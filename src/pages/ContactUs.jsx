@@ -27,7 +27,7 @@ export default function ContactUs() {
                         </div>
                     </Col>
 
-                    <Col md={6} className="mt-5 mb-4 pb-4 d-flex align-items-center justify-content-center" style={{ paddingTop: '140px'}}>
+                    <Col md={6} className="mt-5 mb-4 pb-4 d-flex align-items-center justify-content-center" style={{ paddingTop: '190px'}}>
                         <Form style={{ width: '100%' }}>
                             <Form.Group controlId="formName" className="mb-3">
                                 <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Name</Form.Label>
@@ -43,7 +43,6 @@ export default function ContactUs() {
                                 <Form.Label style={{ fontFamily: 'Montserrat, sans-serif' }}>Details</Form.Label>
                                 <Form.Control as="textarea" rows={5} placeholder="Enter details" style={{ backgroundColor: '#f0f0f0', color: '#333' }}/>
                             </Form.Group>
-                        <br />
                             <Button variant="dark" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 Send
                             </Button>
